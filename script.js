@@ -152,6 +152,23 @@ function hexaToBinary(nb){
     return valueBinary;
 }
 
+function octalToBinary(nb){
+    const table = {
+        "0":"000",
+        "1":"0001",
+        "2":"010",
+        "3":"011",
+        "4":"100",
+        "5":"101",
+        "6":"110",
+        "7":"111"
+    }
+    let valueBinary = "";
+    for(let i=0; i<nb.length; i+=1){
+        valueBinary = valueBinary + table[nb[i]];
+    }
+    return valueBinary;
+}
 
 /*
 * Functions for writing into inputs
