@@ -134,6 +134,20 @@ function binaryToDecimal(nb){
     return String(valueDecimal);
 }
 
+
+/*
+* Functions for writing into inputs
+*
+*/
+function writeIntoX(nb,where){
+    try{
+        document.getElementById(where).value = nb;
+    } catch(e) {
+        return;
+    }
+}
+
+
 /*
 * Main function
 *
