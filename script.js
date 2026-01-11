@@ -65,6 +65,25 @@ function checkValidity(nb,base){
 
 
 /*
+* Utils
+*
+*/
+function groupByX(nb,x){
+    if(x<=0) return [];
+    const chunks = [];
+    for (let i = s.length; i>0; i-=x){
+        const start = Math.max(0, i-x);
+        let chunk = s.slice(start,i);
+        // add leading zeros
+        if (start === 0 && chunk.length < x) {
+            chunk = chunk.padStart(x,'0');
+        }
+    chunks.unshift(chunk);
+  }
+  return chunks;
+}
+
+/*
 * Functions for converting
 *
 */
