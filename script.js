@@ -140,7 +140,11 @@ function binaryToDecimal(nb){
 *
 */
 function writeIntoX(nb,where){
-    pass
+    try{
+        document.getElementById(where).value = nb;
+    } catch(e) {
+        return;
+    }
 }
 
 
