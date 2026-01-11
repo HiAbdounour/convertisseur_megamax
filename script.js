@@ -42,3 +42,23 @@ function isValidArabic(nb){
     // to complete
     pass
 }
+
+
+/*
+* Functions for taking user inputs
+*
+*/
+function checkValidity(nb,base){
+    switch(base){
+        case "hexa": return isValidHexa(nb);
+        case "duodecimal": return isValidDuodeca(nb);
+        case "decimal": return isValidDecimal(nb);
+        case "octal": return isValidOctal(nb);
+        case "cbinary"||"ubinary"||"sbinary"||"gray": return isValidBinary(nb);
+        case "bcd": return isValidBCD(nb);
+        case "ternary": return isValidTernary(nb);
+        case "ascii": return isValidASCII(nb);
+        case "arabic": return isValidArabic(nb);
+        default: {console.log("Unrecognized base"); return false;}
+    }
+}
