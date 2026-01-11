@@ -88,6 +88,12 @@ function errorInput(base){
     });
 }
 
+function emptyInput(){
+    ids.forEach(idx=>{
+       document.getElementById(idx).value = "";
+    });
+}
+
 
 /*
 * Functions for converting
@@ -156,9 +162,8 @@ function mainx(nb,base){
             writeIntoX(convertedValue,idx);
         });
     }
-    else{
-        errorInput(base);
-    }
+    else if(!nb) emptyInput(base);
+    else errorInput(base);
 }
 
 
