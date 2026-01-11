@@ -125,6 +125,15 @@ function binaryToHexa(nb){
     return valueHexa;
 }
 
+function binaryToDecimal(nb){
+    let valueDecimal = 0;
+    const sizex = nb.length;
+    for(let i=0; i<sizex; i+=1){
+        valueDecimal += parseInt(nb[i])*2**(sizex-i-1);
+    }
+    return String(valueDecimal);
+}
+
 /*
 * Main function
 *
