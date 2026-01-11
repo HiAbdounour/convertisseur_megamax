@@ -82,6 +82,12 @@ function groupByX(nb,x){
   return chunks;
 }
 
+function errorInput(base){
+    ids.forEach(idx=>{
+        if(idx!=base) document.getElementById(idx).value = "Invalid input";
+    });
+}
+
 
 /*
 * Functions for converting
@@ -151,7 +157,7 @@ function mainx(nb,base){
         });
     }
     else{
-        pass
+        errorInput(base);
     }
 }
 
