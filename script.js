@@ -12,7 +12,7 @@ function isValidDuodeca(nb){
 }
 
 function isValidDecimal(nb){
-    return /^[-]{0,1}\d*$/.test(nb);
+    return /^\d*$/.test(nb); //[-]{0,1}
 }
 
 function isValidOctal(nb){
