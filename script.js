@@ -141,6 +141,8 @@ function binaryToDecimal(nb){
 function mainx(nb,base){
     if(checkValidity(nb,base) && nb){
         const originBase = base;
+        const root = base=='ubinary' ? nb : ;
+        // write !!!
     }
     else{
         pass
