@@ -75,8 +75,8 @@ function checkValidity(nb,base){
 *
 */
 function mainx(nb,base){
-    if(checkValidity(nb,base)){
-        pass
+    if(checkValidity(nb,base) && nb){
+        const originBase = base;
     }
     else{
         pass
