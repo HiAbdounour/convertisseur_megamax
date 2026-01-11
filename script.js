@@ -155,7 +155,23 @@ function writeIntoX(nb,where){
 function mainx(nb,base){
     if(checkValidity(nb,base) && nb){
         const originBase = base;
-        const root = base=='ubinary' ? nb : ;
+        // we convert to binary (esay to convert to other systems)
+        const root = (()=>{
+            switch(base){
+                case "hexa": return hexaToBinary(nb);
+                case "duodecimal": return;
+                case "decimal": return decimalToBinary(nb);
+                case "octal": return octalToBinary(nb);
+                case "cbinary"||"sbinary"||"gray": return;
+                case "ubinary": return nb;
+                case "bcd": return;
+                case "ternary": return;
+                case "ascii": return;
+                case "arabic": return;
+                default: return;
+            }
+        })();
+        // convert to others !!!
         // write !!!
     }
     else{
