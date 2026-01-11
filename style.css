@@ -1,0 +1,252 @@
+/* Megamax Convertor — full stylesheet
+   - Background: #14141f
+   - Contrast / main text: #ebebe0
+   - Subtle palette accents added but low-visibility to keep the atmosphere
+   - Body/text font: 'Space Grotesk'
+   - Input font: 'JetBrains Mono'
+   - Emphasis font (for <em>): 'Cormorant Garamond'
+*/
+
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap');
+
+:root{
+  /* core */
+  --bg: #14141f;
+  --fg: #ebebe0;
+
+  /* subtle accents (kept muted to preserve atmosphere) */
+  --muted-1: #2a2b3f;   /* cards, subtle lines */
+  --muted-2: #f0c75e;   /* gentle accent for small elements */
+  --muted-3: #ccbfa3;   /* warm muted accent for <em> */
+  --panel: #161621;     /* slightly lighter than bg for panels */
+  --glass: rgba(235,235,224,0.03);
+  --focus: rgba(235,235,224,0.14);
+  --input-bg: rgba(255,255,255,0.02);
+  --disabled-bg: rgba(235,235,224,0.5);
+
+  /* sizing */
+  --radius: 10px;
+  --gap: 18px;
+
+  /* accessibility */
+  --outline-strong: 3px solid rgba(235,235,224,0.16);
+  --transition-fast: 160ms cubic-bezier(.2,.9,.2,1);
+}
+
+/* Basic reset */
+* { box-sizing: border-box; }
+html,body { height: 100%; }
+body{
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(180deg,var(--bg) 0%, #0f0f18 100%);
+  color: var(--fg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Layout: responsive grid so header spans full width and inputs form responsive cards */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 360px));
+  gap: var(--gap);
+  padding: clamp(14px, 4vw, 36px);
+  align-content: start;
+  justify-content: center;
+  font-family: 'Space Grotesk', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  line-height: 1.35;
+}
+
+/* make top content span full width */
+h1, .note { grid-column: 1 / -1; }
+
+/* Heading */
+h1{
+  margin: 0;
+  font-size: clamp(1.25rem, 3.3vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 10px 12px;
+  background: linear-gradient(90deg, rgba(235,235,224,0.02), transparent);
+  border-radius: calc(var(--radius) - 4px);
+  box-shadow: 0 4px 18px rgba(10,10,12,0.45), inset 0 1px 0 rgba(255,255,255,0.02);
+}
+
+/* Distinguish <em> in headings: different font, color and treatment */
+h1 em{
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: normal; /* keep elegant, not slanted */
+  font-variant: small-caps;
+  color: var(--muted-2);
+  font-weight: 500;
+  margin-left: 6px;
+  font-size: 0.78em;
+  letter-spacing: 0.06em;
+  padding: 4px 8px;
+  background: linear-gradient(180deg, rgba(58,59,88,0.06), rgba(16,16,24,0.02));
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(10,10,12,0.45);
+}
+
+/* small explanatory note under heading */
+p.note{
+  margin: 0;
+  padding: 8px 12px;
+  color: rgba(235,235,224,0.9);
+  font-size: 0.95rem;
+  background: linear-gradient(90deg, rgba(255,255,255,0.012), transparent);
+  border-radius: calc(var(--radius) - 6px);
+}
+
+/* Card-like blocks for each converter */
+div[id^="id-"]{
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.006));
+  border-radius: var(--radius);
+  padding: 14px;
+  min-height: 84px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 6px 20px rgba(2,3,6,0.6);
+  border: 1px solid rgba(255,255,255,0.03);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+/* subtle hover lift for pointer-capable devices */
+@media (hover: hover) and (pointer: fine) {
+  div[id^="id-"]:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(2,3,6,0.7);
+  }
+}
+
+/* label paragraph inside card */
+div[id^="id-"] > p{
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(235,235,224,0.92);
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+/* Emphasis inside labels (p and h1) — different visual style, readable and distinct */
+div[id^="id-"] > p em,
+p em{
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  color: var(--muted-3);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 0.98em;
+  letter-spacing: 0.02em;
+  padding: 2px 6px;
+  background: rgba(58,59,88,0.04);
+  border-radius: 6px;
+  border: 1px solid rgba(235,235,224,0.02);
+}
+
+/* Inputs */
+input{
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: linear-gradient(180deg, var(--input-bg), rgba(255,255,255,0.01));
+  color: var(--fg);
+  font-size: 1.02rem;
+  box-shadow: inset 0 -1px 0 rgba(255,255,255,0.02), 0 6px 18px rgba(2,3,6,0.6);
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+  caret-color: var(--fg);
+  /* input-specific font (distinct from body) */
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Placeholder color (if used) */
+input::placeholder{
+  color: rgba(235,235,224,0.5);
+}
+
+/* Focus and keyboard accessibility */
+input:focus{
+  box-shadow: 0 8px 26px rgba(2,3,6,0.65), 0 0 0 6px var(--focus);
+  transform: translateY(-2px);
+}
+
+/* Clear visual focus for keyboard users */
+input:focus-visible{
+  outline: var(--outline-strong);
+  outline-offset: 2px;
+}
+
+/* Disabled inputs appearance */
+input:disabled{
+  background: linear-gradient(180deg, var(--disabled-bg), rgba(255,255,255,0.008));
+  color: rgba(235,235,224,0.55);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* small screens / one-column tweaks */
+@media (max-width: 700px) {
+  body{
+    grid-template-columns: 1fr;
+    padding: 14px;
+  }
+
+  h1{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 12px;
+  }
+
+  h1 em{ font-size: 0.86em; padding: 6px 10px; }
+}
+
+/* medium screens (tablet) - comfortable spacing */
+@media (min-width: 701px) and (max-width: 1100px){
+  body{
+    grid-template-columns: repeat(2, minmax(240px, 1fr));
+    gap: 16px;
+  }
+}
+
+/* make sure long labels wrap nicely */
+div[id^="id-"] p{ word-break: keep-all; }
+
+/* Utility: subtle divider between label and input on wide screens */
+@media (min-width: 900px){
+  div[id^="id-"]{
+    gap: 12px;
+    padding: 16px;
+  }
+}
+
+/* Small accessibility helpers: increase hit area of inputs on touch */
+input{
+  min-height: 44px; /* recommended touch target */
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce){
+  * { transition: none !important; animation: none !important; transform: none !important; }
+}
+
+/* Small print: make <b> more visible but not overpowering */
+p.note b, div[id^="id-"] p b{
+  background: rgba(235,235,224,0.03);
+  padding: 2px 6px;
+  border-radius: 6px;
+  color: var(--fg);
+  font-weight: 700;
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,0.25);
+}
