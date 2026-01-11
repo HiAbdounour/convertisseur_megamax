@@ -171,9 +171,7 @@ function octalToBinary(nb){
 }
 
 function decimalToBinary(nb){
-    let nbInt = parseInt(nb);
-    let valueBinary = "";
-    //uh, I just find out parseInt can have base !
+    return Number(nb).toString(2);
 }
 
 
