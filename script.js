@@ -53,7 +53,7 @@ function checkValidity(nb,base){
         case "duodecimal": return isValidDuodeca(nb);
         case "decimal": return isValidDecimal(nb);
         case "octal": return isValidOctal(nb);
-        case "cbinary"||"ubinary"||"sbinary"||"gray": return isValidBinary(nb);
+        case ["cbinary","ubinary","sbinary","gray"].includes(base): return isValidBinary(nb);
         case "bcd": return isValidBCD(nb);
         case "ternary": return isValidTernary(nb);
         case "ascii": return isValidASCII(nb);
@@ -123,7 +123,7 @@ function mainx(nb,base){
                 case "duodecimal": return;
                 case "decimal": return nb;
                 case "octal": return awesomeConvertorToDecimal(nb,8);
-                case "cbinary"||"sbinary"||"gray": return;
+                case ["cbinary","sbinary","gray"].includes(base): return;
                 case "ubinary": return awesomeConvertorToDecimal(nb,2);
                 case "bcd": return;
                 case "ternary": return awesomeConvertorToDecimal(nb,3);
@@ -140,7 +140,7 @@ function mainx(nb,base){
                     case "duodecimal": return "";
                     case "octal": return awesomeConvertorFromDecimal(root,8);
                     case "ubinary": return awesomeConvertorFromDecimal(root,2);
-                    case "cbinary"||"sbinary"||"gray": return "";
+                    case ["cbinary","sbinary","gray"].includes(idx): return "";
                     case "bcd": return "";
                     case "ternary": return awesomeConvertorFromDecimal(nb,3);
                     case "ascii": return "";
