@@ -140,11 +140,7 @@ function binaryToDecimal(nb){
 *
 */
 function writeIntoX(nb,where){
-    try{
-        document.getElementById(where).value = nb;
-    } catch(e) {
-        return;
-    }
+    pass
 }
 
 
@@ -171,8 +167,24 @@ function mainx(nb,base){
                 default: return;
             }
         })();
-        // convert to others !!!
-        // write !!!
+        ids.forEach(idx=>{
+            const convertedValue = (()=>{
+                if(idx=='ubinary') return root;
+                if(idx==originBase) return nb;
+                switch(base){
+                    case "hexa": return binaryToHexa(root);
+                    case "duodecimal": return "";
+                    case "decimal": return binaryToDecimal(root);
+                    case "octal": return binaryToOctal(root);
+                    case "cbinary"||"sbinary"||"gray": return "";
+                    case "bcd": return "";
+                    case "ternary": return "";
+                    case "ascii": return "";
+                    case "arabic": return "";
+                }
+            })();
+            writeIntoX(convertedValue,idx);
+        });
     }
     else{
         pass
