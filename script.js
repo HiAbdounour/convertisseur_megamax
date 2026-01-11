@@ -134,6 +134,24 @@ function binaryToDecimal(nb){
     return String(valueDecimal);
 }
 
+function hexaToBinary(nb){
+    const table = {
+        "0":"0000","8":"1000",
+        "1":"0001","9":"1001",
+        "2":"0010","A":"1010",
+        "3":"0011","B":"1011",
+        "4":"0100","C":"1100",
+        "5":"0101","D":"1101",
+        "6":"0110","E":"1110",
+        "7":"0111","F":"1111"
+    }
+    let valueBinary = "";
+    for(let i=0; i<nb.length; i+=1){
+        valueBinary = valueBinary + table[nb[i]];
+    }
+    return valueBinary;
+}
+
 
 /*
 * Functions for writing into inputs
