@@ -1,4 +1,7 @@
-// Functions for ensuring validity of inputs
+/*
+* Functions for ensuring validity of inputs
+*
+*/
 function isValidHexa(nb){
     return /^[0-9A-Fa-f]*$/.test(nb);
 }
