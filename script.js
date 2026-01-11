@@ -53,12 +53,12 @@ function checkValidity(nb,base){
         case "duodecimal": return isValidDuodeca(nb);
         case "decimal": return isValidDecimal(nb);
         case "octal": return isValidOctal(nb);
-        case ["cbinary","ubinary","sbinary","gray"].includes(base): return isValidBinary(nb);
+        case "cbinary" : case "ubinary" : case "sbinary" : case "gray" : return isValidBinary(nb);
         case "bcd": return isValidBCD(nb);
         case "ternary": return isValidTernary(nb);
         case "ascii": return isValidASCII(nb);
         case "arabic": return isValidArabic(nb);
-        default: {console.log("Unrecognized system"); return false;}
+        default: {console.log(`Unrecognized system : ${base}`); return false;}
     }
 }
 
