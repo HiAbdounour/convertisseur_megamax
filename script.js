@@ -155,7 +155,7 @@ function writeIntoX(nb,where){
 function mainx(nb,base){
     if(checkValidity(nb,base) && nb){
         const originBase = base;
-        // we convert to binary (esay to convert to other systems)
+        // we convert to binary (easy to convert to other systems)
         const root = (()=>{
             switch(base){
                 case "hexa": return hexaToBinary(nb);
