@@ -123,7 +123,7 @@ function mainx(nb,base){
                 case "duodecimal": return;
                 case "decimal": return nb;
                 case "octal": return awesomeConvertorToDecimal(nb,8);
-                case ["cbinary","sbinary","gray"].includes(base): return;
+                case "cbinary" : case "sbinary" : case "gray" : return;
                 case "ubinary": return awesomeConvertorToDecimal(nb,2);
                 case "bcd": return;
                 case "ternary": return awesomeConvertorToDecimal(nb,3);
@@ -140,7 +140,7 @@ function mainx(nb,base){
                     case "duodecimal": return "";
                     case "octal": return awesomeConvertorFromDecimal(root,8);
                     case "ubinary": return awesomeConvertorFromDecimal(root,2);
-                    case ["cbinary","sbinary","gray"].includes(idx): return "";
+                    case "cbinary" : case "sbinary" : case "gray" : return "";
                     case "bcd": return "";
                     case "ternary": return awesomeConvertorFromDecimal(nb,3);
                     case "ascii": return "";
