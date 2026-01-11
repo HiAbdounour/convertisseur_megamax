@@ -29,8 +29,7 @@ function isValidBCD(nb){
 }
 
 function isValidTernary(nb){
-    // to complete
-    pass
+    return /^[0-2]*$/.test(nb);
 }
 
 function isValidASCII(nb){
@@ -127,7 +126,7 @@ function mainx(nb,base){
                 case "cbinary"||"sbinary"||"gray": return;
                 case "ubinary": return awesomeConvertorToDecimal(nb,2);
                 case "bcd": return;
-                case "ternary": return;
+                case "ternary": return awesomeConvertorToDecimal(nb,3);
                 case "ascii": return;
                 case "arabic": return;
             }
@@ -143,7 +142,7 @@ function mainx(nb,base){
                     case "ubinary": return awesomeConvertorFromDecimal(root,2);
                     case "cbinary"||"sbinary"||"gray": return "";
                     case "bcd": return "";
-                    case "ternary": return "";
+                    case "ternary": return awesomeConvertorFromDecimal(nb,3);
                     case "ascii": return "";
                     case "arabic": return "";
                 }
