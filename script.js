@@ -62,3 +62,39 @@ function checkValidity(nb,base){
         default: {console.log("Unrecognized base"); return false;}
     }
 }
+
+
+/*
+* Functions for converting
+*
+*/
+
+
+/*
+* Main function
+*
+*/
+function mainx(nb,base){
+    if(checkValidity(nb,base)){
+        pass
+    }
+    else{
+        pass
+    }
+}
+
+
+/*
+* Event Listeners
+*
+*/
+const ids = [
+  'hexa','duodecimal','decimal','octal',
+  'ubinary','sbinary','cbinary','bcd','gray',
+  'ternary',
+  'ascii','arabic'
+];
+ids.forEach(idx => {
+    const idInput = document.getElementById(idx);
+    idInput.addEventListener('input',(e)=>mainx(e.target.value,idx));
+})
