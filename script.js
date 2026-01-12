@@ -24,8 +24,7 @@ function isValidBinary(nb){
 }
 
 function isValidBCD(nb){
-    // to complete
-    pass
+    return /^[0-1 ]*$/.test(nb);
 }
 
 function isValidTernary(nb){
@@ -107,6 +106,23 @@ function awesomeConvertorToDecimal(nb,fromBase){
     return parseInt(nb,fromBase).toString();
 }
 
+function BCDtoDecimal(nb){
+	let valueDecimal = "";
+	const groups = nb.split(' ');
+	groups.forEach(digitGroup => {
+		if(digitGroup) valueDecimal = valueDecimal + awesomeConvertorToDecimal(digitGroup,2);
+	});
+	return valueDecimal;
+}
+
+function decimalToBCD(nb){
+	let valueBCD = "";
+	for(let i=0; i<nb.length; i+=1){
+		valueBCD = valueBCD + awesomeConvertorFromDecimal(nb,2);
+		if(i!=nb.length-1) valueBCD = valueBCD + ' ';
+	}
+	return valueBCD;
+}
 
 /*
 * Functions for writing into inputs
@@ -137,7 +153,7 @@ function mainx(nb,base){
                 case "octal": return awesomeConvertorToDecimal(nb,8);
                 case "cbinary" : case "sbinary" : case "gray" : return;
                 case "ubinary": return awesomeConvertorToDecimal(nb,2);
-                case "bcd": return;
+                case "bcd": return BCDtoDecimal(nb);
                 case "ternary": return awesomeConvertorToDecimal(nb,3);
                 case "ascii": return;
                 case "arabic": return;
@@ -153,7 +169,7 @@ function mainx(nb,base){
                     case "octal": return awesomeConvertorFromDecimal(root,8);
                     case "ubinary": return awesomeConvertorFromDecimal(root,2);
                     case "cbinary" : case "sbinary" : case "gray" : return "";
-                    case "bcd": return "";
+                    case "bcd": return decimalToBCD(root);
                     case "ternary": return awesomeConvertorFromDecimal(nb,3);
                     case "ascii": return "";
                     case "arabic": return "";
