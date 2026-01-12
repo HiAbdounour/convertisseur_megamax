@@ -118,7 +118,7 @@ function BCDtoDecimal(nb){
 function decimalToBCD(nb){
 	let valueBCD = "";
 	for(let i=0; i<nb.length; i+=1){
-		valueBCD = valueBCD + awesomeConvertorFromDecimal(nb,2);
+		valueBCD = valueBCD + awesomeConvertorFromDecimal(nb,2).padStart(4,"0");
 		if(i!=nb.length-1) valueBCD = valueBCD + ' ';
 	}
 	return valueBCD;
