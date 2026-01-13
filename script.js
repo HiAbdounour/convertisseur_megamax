@@ -128,6 +128,7 @@ function ASCIItoDecimal(nb){
     let valueDecimal = "";
     for(let i=0; i<nb.length; i+=1){
         valueDecimal = valueDecimal + nb.charCodeAt(i).toString();
+        if(i!=nb.length-1) valueDecimal = valueDecimal + " ";
     }
     return valueDecimal;
 }
