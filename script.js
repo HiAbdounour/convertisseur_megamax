@@ -80,11 +80,11 @@ function groupByX(nb,x){
 }
 
 function alphaToA(nb){
-    return nb.replaceAll('α','a').replace('ß','b');
+    return nb.replaceAll('α','a').replaceAll('ß','b');
 }
 
 function aToAlpha(nb){
-    return nb.replaceAll('a','α').replace('b','ß');
+    return nb.replaceAll('a','α').replaceAll('b','ß');
 }
 
 function errorInput(base){
