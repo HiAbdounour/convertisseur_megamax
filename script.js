@@ -31,12 +31,11 @@ function isValidTernary(nb){
 }
 
 function isValidASCII(nb){
-    return/^[ -~]$/.test(nb);
+    return /^[ -~]$/.test(nb);
 }
 
 function isValidArabic(nb){
-    // to complete
-    pass
+    return /^[٠١٢٣٤٥٦٧٨٩]*$/.test(nb);
 }
 
 
@@ -140,6 +139,27 @@ function decimalToASCII(nb){
     return `Cannot convert ${nb} to ASCII`
 }
 
+function decimalToEA(nb){
+    const arabic = "٠١٢٣٤٥٦٧٨٩"
+    let valueEA = ""
+    for(let i=0; i<nb.length; i+=1){
+        valueEA = valueEA + arabic[nb[i]];
+    }
+    return valueEA;
+}
+
+function EAToDecimal(nb){
+    const table = {
+        "٠":"0","١":"1","٢":"2","٣":"3","٤":"4",
+        "٥":"5","٦":"6","٧":"7","٨":"8","٩":"9"
+    }
+    let valueDecimal = "";
+    for(let i=0; i<nb.length; i+=1){
+        valueDecimal = valueDecimal + table[nb[i]];
+    }
+    return valueDecimal;
+}
+
 /*
 * Functions for writing into inputs
 *
@@ -172,7 +192,7 @@ function mainx(nb,base){
                 case "bcd": return BCDtoDecimal(nb);
                 case "ternary": return awesomeConvertorToDecimal(nb,3);
                 case "ascii": return ASCIItoDecimal(nb);
-                case "arabic": return;
+                case "arabic": return EAToDecimal(nb);
             }
         })();
         ids.forEach(idx=>{
@@ -188,7 +208,7 @@ function mainx(nb,base){
                     case "bcd": return decimalToBCD(root);
                     case "ternary": return awesomeConvertorFromDecimal(root,3);
                     case "ascii": return decimalToASCII(root);
-                    case "arabic": return "";
+                    case "arabic": return decimalToEA(root);
                 }
             })();
             writeIntoX(convertedValue,idx);
