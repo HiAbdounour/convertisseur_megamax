@@ -124,12 +124,7 @@ function decimalToBCD(nb){
 }
 
 function ASCIItoDecimal(nb){
-    // nb is a string encoded ASCII
-    let valueDecimal = "";
-    for(let i=0; i<nb.length; i+=1){
-        valueDecimal = valueDecimal + nb.charCodeAt(i).toString();
-    }
-    return valueDecimal;
+    return nb.charCodeAt(0);
 }
 
 function decimalToASCII(nb){
