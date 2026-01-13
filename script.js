@@ -32,8 +32,7 @@ function isValidTernary(nb){
 }
 
 function isValidASCII(nb){
-    // to complete
-    pass
+    return/^[ -~]*$/.test(nb);
 }
 
 function isValidArabic(nb){
