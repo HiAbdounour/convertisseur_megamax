@@ -123,6 +123,15 @@ function decimalToBCD(nb){
 	return valueBCD;
 }
 
+function ASCIItoDecimal(nb){
+    // nb is a string encoded ASCII
+    let valueDecimal = "";
+    for(let i=0; i<nb.length; i+=1){
+        valueDecimal = valueDecimal + nb.charCodeAt(i).toString();
+    }
+    return valueDecimal;
+}
+
 /*
 * Functions for writing into inputs
 *
@@ -154,7 +163,7 @@ function mainx(nb,base){
                 case "ubinary": return awesomeConvertorToDecimal(nb,2);
                 case "bcd": return BCDtoDecimal(nb);
                 case "ternary": return awesomeConvertorToDecimal(nb,3);
-                case "ascii": return;
+                case "ascii": return ASCIItoDecimal(nb);
                 case "arabic": return;
             }
         })();
