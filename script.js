@@ -7,8 +7,7 @@ function isValidHexa(nb){
 }
 
 function isValidDuodeca(nb){
-    // to complete
-    pass
+    return /^[0-9αß]*$/.test(nb);
 }
 
 function isValidDecimal(nb){
