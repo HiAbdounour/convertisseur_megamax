@@ -132,6 +132,11 @@ function ASCIItoDecimal(nb){
     return valueDecimal;
 }
 
+function decimalToASCII(nb){
+    let valueASCII = "";
+    // nope
+}
+
 /*
 * Functions for writing into inputs
 *
