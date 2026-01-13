@@ -9,3 +9,4 @@ Nexts (see roadmap for more infos) :
 - passer au float mode !!
 
 - why not : add Unicode like ASCII
+- !!! seems to have a limit from which only 0000 for decimal
