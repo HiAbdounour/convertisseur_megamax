@@ -134,8 +134,7 @@ function ASCIItoDecimal(nb){
 }
 
 function decimalToASCII(nb){
-    let valueASCII = "";
-    // nope
+    return String.fromCharCode([...nb]);
 }
 
 /*
