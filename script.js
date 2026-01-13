@@ -133,7 +133,9 @@ function ASCIItoDecimal(nb){
 }
 
 function decimalToASCII(nb){
-    return String.fromCharCode([...nb]);
+    const nbInt = parseInt(nb);
+    if(0<=nbInt && nbInt<=127) return String.fromCharCode(nbInt);
+    return `Cannot convert ${nb} to ASCII`
 }
 
 /*
@@ -183,7 +185,7 @@ function mainx(nb,base){
                     case "cbinary" : case "sbinary" : case "gray" : return "";
                     case "bcd": return decimalToBCD(root);
                     case "ternary": return awesomeConvertorFromDecimal(nb,3);
-                    case "ascii": return "";
+                    case "ascii": return decimalToASCII(root);
                     case "arabic": return "";
                 }
             })();
