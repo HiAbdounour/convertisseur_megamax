@@ -32,7 +32,7 @@ function isValidTernary(nb){
 }
 
 function isValidASCII(nb){
-    return/^[ -~]*$/.test(nb);
+    return/^[ -~]$/.test(nb);
 }
 
 function isValidArabic(nb){
