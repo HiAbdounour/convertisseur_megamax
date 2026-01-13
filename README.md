@@ -7,3 +7,5 @@ Nexts (see roadmap for more infos) :
 - débloquez les dernières sections
 - prendre en compte les nombres négatifs
 - passer au float mode !!
+
+- why not : add Unicode like ASCII
