@@ -179,7 +179,7 @@ function mainx(nb,base){
                     case "ubinary": return awesomeConvertorFromDecimal(root,2);
                     case "cbinary" : case "sbinary" : case "gray" : return "";
                     case "bcd": return decimalToBCD(root);
-                    case "ternary": return awesomeConvertorFromDecimal(nb,3);
+                    case "ternary": return awesomeConvertorFromDecimal(root,3);
                     case "ascii": return decimalToASCII(root);
                     case "arabic": return "";
                 }
