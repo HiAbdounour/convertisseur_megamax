@@ -79,6 +79,14 @@ function groupByX(nb,x){
   return chunks;
 }
 
+function alphaToA(nb){
+    return nb.replaceAll('α','a').replace('ß','b');
+}
+
+function aToAlpha(nb){
+    return nb.replaceAll('a','α').replace('b','ß');
+}
+
 function errorInput(base){
     ids.forEach(idx=>{
         if(idx!=base) document.getElementById(idx).value = "Invalid input";
@@ -156,7 +164,7 @@ function mainx(nb,base){
         const root = (()=>{
             switch(base){
                 case "hexa": return awesomeConvertorToDecimal(nb,16);
-                case "duodecimal": return;
+                case "duodecimal": return awesomeConvertorToDecimal(alphaToA(nb),12);
                 case "decimal": return nb;
                 case "octal": return awesomeConvertorToDecimal(nb,8);
                 case "cbinary" : case "sbinary" : case "gray" : return;
@@ -173,7 +181,7 @@ function mainx(nb,base){
                 if(idx==originBase) return nb;
                 switch(idx){
                     case "hexa": return awesomeConvertorFromDecimal(root,16);
-                    case "duodecimal": return "";
+                    case "duodecimal": return aToAlpha(awesomeConvertorFromDecimal(root,12));
                     case "octal": return awesomeConvertorFromDecimal(root,8);
                     case "ubinary": return awesomeConvertorFromDecimal(root,2);
                     case "cbinary" : case "sbinary" : case "gray" : return "";
