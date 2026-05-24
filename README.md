@@ -2,10 +2,7 @@
 Code source du convertisseur mégamax, un outil permettant de convertir des nombres dans plusieurs bases \
 Pour accéder au convertisseur : [ici](https://hiabdounour.github.io/convertisseur_megamax/)
 
-
-Nexts (see roadmap for more infos) :
-- prendre en compte les nombres négatifs
-- passer au float mode !!
-
-- why not : add Unicode like ASCII
-- !!! seems to have a limit from which only 0000 for decimal
+Prochains points à ajouter :
+- les nombres négatifs
+- le (2e ?) panel pour nombres réels
+- somewhere : (error) !!! seems to have a limit from which only 0000 for decimal
