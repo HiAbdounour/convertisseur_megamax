@@ -116,6 +116,19 @@ function only_pos2u(nb){
     return awesomeConvertorFromDecimal(nb,2);
 }
 
+function uConvertorToDecimal(nb){
+    const rnb = nb.slice(1);
+    if(nb[0]==='1') return "-"+awesomeConvertorToDecimal(rnb,2);
+    return awesomeConvertorToDecimal(rnb,2);
+}
+
+function uConvertorFromDecimal(nb){
+    const rnb = nb[0]==="-" ? nb.slice(1) : nb;
+    const converted = awesomeConvertorFromDecimal(rnb,2);
+    const length = parseInt(Math.log2(converted.length))+1;    
+    return nb[0]==="-" ? "1"+converted.padStart(2**length-1,'0') : converted.padStart(2**length,'0');
+}
+
 function BCDtoDecimal(nb){
 	let valueDecimal = "";
     if(nb[0]=='-'){
@@ -202,7 +215,8 @@ function mainx(nb,base){
                 case "duodecimal": return awesomeConvertorToDecimal(alphaToA(nb),12);
                 case "decimal": return nb;
                 case "octal": return awesomeConvertorToDecimal(nb,8);
-                case "cbinary" : case "sbinary" : case "gray" : return;
+                case "sbinary": return uConvertorToDecimal(nb);
+                case "cbinary" : case "gray" : return;
                 case "ubinary": return awesomeConvertorToDecimal(nb,2);
                 case "bcd": return BCDtoDecimal(nb);
                 case "ternary": return awesomeConvertorToDecimal(nb,3);
@@ -219,7 +233,8 @@ function mainx(nb,base){
                     case "duodecimal": return aToAlpha(awesomeConvertorFromDecimal(root,12));
                     case "octal": return awesomeConvertorFromDecimal(root,8);
                     case "ubinary": return only_pos2u(root);
-                    case "cbinary" : case "sbinary" : case "gray" : return "";
+                    case "sbinary" : return uConvertorFromDecimal(root);
+                    case "cbinary" : case "gray" : return "";
                     case "bcd": return decimalToBCD(root);
                     case "ternary": return awesomeConvertorFromDecimal(root,3);
                     case "ascii": return decimalToASCII(root);
