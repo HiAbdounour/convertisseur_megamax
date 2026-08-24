@@ -3,7 +3,7 @@
 *
 */
 function isValidHexa(nb){
-    return /^[0-9A-Fa-f]*$/.test(nb);
+    return /^[-]{0,1}[0-9A-Fa-f]*$/.test(nb);
 }
 
 function isValidDuodeca(nb){
