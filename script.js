@@ -111,6 +111,11 @@ function awesomeConvertorToDecimal(nb,fromBase){
     return parseInt(nb,fromBase).toString();
 }
 
+function only_pos2u(nb){
+    if(nb[0]=="-") return "Cannot convert negative numbers";
+    return awesomeConvertorFromDecimal(nb,2);
+}
+
 function BCDtoDecimal(nb){
 	let valueDecimal = "";
     if(nb[0]=='-'){
@@ -213,7 +218,7 @@ function mainx(nb,base){
                     case "hexa": return awesomeConvertorFromDecimal(root,16);
                     case "duodecimal": return aToAlpha(awesomeConvertorFromDecimal(root,12));
                     case "octal": return awesomeConvertorFromDecimal(root,8);
-                    case "ubinary": return awesomeConvertorFromDecimal(root,2);
+                    case "ubinary": return only_pos2u(root);
                     case "cbinary" : case "sbinary" : case "gray" : return "";
                     case "bcd": return decimalToBCD(root);
                     case "ternary": return awesomeConvertorFromDecimal(root,3);
