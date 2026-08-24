@@ -23,7 +23,7 @@ function isValidBinary(nb){
 }
 
 function isValidBCD(nb){
-    return /^[0-1 ]*$/.test(nb);
+    return /^(?:- )?[01]{4}(?: [01]{4})*$/.test(nb);
 }
 
 function isValidTernary(nb){
@@ -113,9 +113,12 @@ function awesomeConvertorToDecimal(nb,fromBase){
 
 function BCDtoDecimal(nb){
 	let valueDecimal = "";
+    if(nb[0]=='-'){
+        valueDecimal = "-";
+    }
 	const groups = nb.split(' ');
 	groups.forEach(digitGroup => {
-		if(digitGroup) valueDecimal = valueDecimal + awesomeConvertorToDecimal(digitGroup,2);
+		if(digitGroup && digitGroup!='-') valueDecimal = valueDecimal + awesomeConvertorToDecimal(digitGroup,2);
 	});
 	return valueDecimal;
 }
@@ -123,6 +126,7 @@ function BCDtoDecimal(nb){
 function decimalToBCD(nb){
 	let valueBCD = "";
 	for(let i=0; i<nb.length; i+=1){
+        if(i==0 && nb[i]=="-"){valueBCD = "- ";continue;}
 		valueBCD = valueBCD + awesomeConvertorFromDecimal(nb[i],2).padStart(4,"0");
 		if(i!=nb.length-1) valueBCD = valueBCD + ' ';
 	}
