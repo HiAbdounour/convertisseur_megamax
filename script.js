@@ -86,6 +86,16 @@ function aToAlpha(nb){
     return nb.replaceAll('A','α').replaceAll('B','ß');
 }
 
+function inversC2(nb){
+    const d = {"0":"1","1":"0"}
+    let nd = "";
+    for(let i=0;i<nb.length;i++){
+        nd = nd + d[nb[i]];
+    }
+    // +1 !!
+    return nd;
+}
+
 function errorInput(base){
     ids.forEach(idx=>{
         if(idx!=base) document.getElementById(idx).value = "Invalid input";
@@ -127,6 +137,19 @@ function uConvertorFromDecimal(nb){
     const converted = awesomeConvertorFromDecimal(rnb,2);
     const length = parseInt(Math.log2(converted.length))+1;    
     return nb[0]==="-" ? "1"+converted.padStart(2**length-1,'0') : converted.padStart(2**length,'0');
+}
+
+function c2ConvertorToDecimal(nb){
+    const rnb = nb[0]==="1" ? nb.slice(1) : nb;
+    return nb[0]==="1" ? "-"+awesomeConvertorToDecimal(inversC2(rnb),2) : awesomeConvertorToDecimal(rnb,2);
+}
+
+function c2ConvertorFromDecimal(nb){
+    const rnb = nb[0]==="-" ? nb.slice(1) : nb;
+    const converted = awesomeConvertorFromDecimal(rnb,2);
+    const length = parseInt(Math.log2(converted.length))+1;
+    const fnb = converted.padStart(2**length,'0');
+    return nb[0]==="-" ? inversC2(fnb) : fnb;
 }
 
 function BCDtoDecimal(nb){
@@ -216,7 +239,8 @@ function mainx(nb,base){
                 case "decimal": return nb;
                 case "octal": return awesomeConvertorToDecimal(nb,8);
                 case "sbinary": return uConvertorToDecimal(nb);
-                case "cbinary" : case "gray" : return;
+                case "cbinary" : return c2ConvertorToDecimal(nb);
+                case "gray" : return;
                 case "ubinary": return awesomeConvertorToDecimal(nb,2);
                 case "bcd": return BCDtoDecimal(nb);
                 case "ternary": return awesomeConvertorToDecimal(nb,3);
@@ -234,7 +258,8 @@ function mainx(nb,base){
                     case "octal": return awesomeConvertorFromDecimal(root,8);
                     case "ubinary": return only_pos2u(root);
                     case "sbinary" : return uConvertorFromDecimal(root);
-                    case "cbinary" : case "gray" : return "";
+                    case "cbinary" : return c2ConvertorFromDecimal(root);
+                    case "gray" : return "";
                     case "bcd": return decimalToBCD(root);
                     case "ternary": return awesomeConvertorFromDecimal(root,3);
                     case "ascii": return decimalToASCII(root);
