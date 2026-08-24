@@ -7,15 +7,15 @@ function isValidHexa(nb){
 }
 
 function isValidDuodeca(nb){
-    return /^[0-9αß]*$/.test(nb);
+    return /^[-]{0,1}[0-9αß]*$/.test(nb);
 }
 
 function isValidDecimal(nb){
-    return /^\d*$/.test(nb); //[-]{0,1}
+    return /^[-]{0,1}\d*$/.test(nb);
 }
 
 function isValidOctal(nb){
-    return /^[0-7]*$/.test(nb);
+    return /^[-]{0,1}[0-7]*$/.test(nb);
 }
 
 function isValidBinary(nb){
@@ -27,7 +27,7 @@ function isValidBCD(nb){
 }
 
 function isValidTernary(nb){
-    return /^[0-2]*$/.test(nb);
+    return /^[-]{0,1}[0-2]*$/.test(nb);
 }
 
 function isValidASCII(nb){
