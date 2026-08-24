@@ -92,8 +92,21 @@ function inversC2(nb){
     for(let i=0;i<nb.length;i++){
         nd = nd + d[nb[i]];
     }
-    // +1 !!
-    return nd;
+    return add1_binary(nd);
+}
+
+function add1_binary(nb) {
+  const bits = nb.split('');
+  let i = nb.length-1;
+  while (i >= 0 && bits[i] === '1') {
+    bits[i] = '0';
+    i--;
+  }
+  if (i >= 0) {
+    bits[i] = '1';
+    return bits.join('');
+  }
+  return '1' + bits.join('');
 }
 
 function errorInput(base){
