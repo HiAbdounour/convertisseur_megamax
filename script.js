@@ -35,7 +35,7 @@ function isValidASCII(nb){
 }
 
 function isValidArabic(nb){
-    return /^[٠١٢٣٤٥٦٧٨٩]*$/.test(nb);
+    return /^[٠١٢٣٤٥٦٧٨٩]*[-]{0,1}$/.test(nb);
 }
 
 
@@ -145,10 +145,13 @@ function decimalToASCII(nb){
 
 function decimalToEA(nb){
     const arabic = "٠١٢٣٤٥٦٧٨٩"
+    let neg = false;
     let valueEA = ""
     for(let i=0; i<nb.length; i+=1){
+        if(nb[i]=='-'){neg=true;continue;}
         valueEA = valueEA + arabic[nb[i]];
     }
+    if(neg){valueEA = valueEA+"-";}
     return valueEA;
 }
 
@@ -158,9 +161,12 @@ function EAToDecimal(nb){
         "٥":"5","٦":"6","٧":"7","٨":"8","٩":"9"
     }
     let valueDecimal = "";
+    let neg = false;
     for(let i=0; i<nb.length; i+=1){
+        if(nb[i]=='-'){neg=true;continue;}
         valueDecimal = valueDecimal + table[nb[i]];
     }
+    if(neg){valueDecimal = "-"+valueDecimal;}
     return valueDecimal;
 }
 
